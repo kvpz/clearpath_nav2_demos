@@ -83,13 +83,13 @@ def launch_setup(context, *args, **kwargs):
     launch_nav2 = PathJoinSubstitution(
       [pkg_nav2_bringup, 'launch', 'navigation_launch.py'])
 
+        # TODO: comment out setup of namespace 
     nav2 = GroupAction([
         PushRosNamespace(namespace),
-        SetRemap('/' + namespace + '/global_costmap/sensors/lidar2d_0/scan',
-                 '/' + namespace + '/sensors/lidar2d_0/scan'),
-        SetRemap('/' + namespace + '/local_costmap/sensors/lidar2d_0/scan',
-                 '/' + namespace + '/sensors/lidar2d_0/scan'),
-
+        SetRemap('/global_costmap/sensors/lidar3d_0/scan',
+                 '/sensors/lidar3d_0/scan'),
+        SetRemap('/local_costmap/sensors/lidar3d_0/scan',
+                 '/sensors/lidar3d_0/scan'),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(launch_nav2),
             launch_arguments=[

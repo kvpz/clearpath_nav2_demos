@@ -69,6 +69,7 @@ def launch_setup(context, *args, **kwargs):
     # Parse robot YAML into config
     clearpath_config = ClearpathConfig(config)
 
+    # TODO: remove use of a namespace
     namespace = clearpath_config.system.namespace
     platform_model = clearpath_config.platform.get_platform_model()
 
@@ -89,7 +90,7 @@ def launch_setup(context, *args, **kwargs):
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
         name='slam_toolbox',
-        namespace=namespace,
+        #namespace=namespace,
         output='screen',
         parameters=[
           rewritten_parameters,
